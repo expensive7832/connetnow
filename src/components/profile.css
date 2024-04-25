@@ -1,0 +1,72 @@
+#profile{
+    overflow: auto;
+padding: 1rem;
+}
+
+#profile .ppSection{
+    margin: auto;
+    position: relative;
+}
+#profile .profImg{
+    width: 6rem;
+    height: 6rem;
+    object-fit: contain;
+    border-radius: 50%;
+    margin: auto;
+}
+
+#profile .changeImage .MuiSvgIcon-root {
+    fill: rgb(66, 66, 226)!important;
+}
+#profile .MuiSvgIcon-root:hover{
+    fill: rgb(14, 14, 82)!important;
+}
+#profile .changeImage{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#profile .hobby{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style-type: none;
+}
+#profile .hobby li{
+padding: .5rem;
+font-weight: 800;
+font-family: cursive;
+}
+
+#profile .hobbyTitle, .interest, .aboutmeTitle{
+padding: .1rem;
+background-color:rgb(30, 30, 185) ;
+margin: .3rem 0;
+color: #fff;
+
+}
+
+.otherpic{
+    position: relative;
+}
+
+.otherpic .deleteIcon{
+
+    position: absolute;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    translate: -50%;
+    display: none;
+}
+
+.otherpic:hover .theavatar{
+   
+    opacity: 0.2;
+
+}
+.otherpic:hover .deleteIcon{
+   display:block;
+}

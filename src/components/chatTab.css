@@ -1,0 +1,15 @@
+#chatTab img{
+    width: 100%;
+    height: 10vh;
+border-radius: 50%;
+    object-fit: contain;
+}
+
+.friendDisplay{
+    overflow: scroll;
+    padding: 3rem;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}

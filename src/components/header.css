@@ -1,0 +1,58 @@
+#header{
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+
+#header .MuiAppBar-colorPrimary, .MuiFormLabel-root {
+    color: #fff!important;
+    text-shadow: 0 0 2px #000;
+    background-color: transparent!important;
+}
+#header .MuiTypography-body2, .MuiFormLabel-root {
+    font-size: 1.2rem!important;
+    text-shadow: 0 0 2px #000;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 600;
+    line-height: 1.43;
+    letter-spacing: 0.01071em;
+}
+#header .MuiPaper-elevation4 {
+    box-shadow: none!important
+}
+
+#header .logo{
+    width: contain;
+    height: 3rem;
+    object-fit: contain;
+    margin: 0 1rem;
+    flex:20%
+}
+#header .center{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex:40%
+}
+#header .right{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex:20%
+}
+#header .MuiSelect-icon {
+    position: relative;
+    top: calc(50% - 12px);
+    color: #fff;
+    right: 0;
+    position: relative;
+    pointer-events: none;
+}
+
+#header .toolbar{
+    display: flex;
+    justify-content: space-between;
+
+
+}

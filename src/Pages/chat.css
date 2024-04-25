@@ -1,0 +1,141 @@
+#chat {
+    width: 60vw;
+    margin: auto;
+    background-color: #f1f2f3;
+}
+
+#chat .MuiPaper-root{
+    background-color: inherit!important;
+}
+
+#chat img{
+    width: 2rem;
+    padding: .3rem;
+    height: 2rem;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.nomsg{
+    text-align: center;
+    font-weight: bold;
+}
+
+.chatarea{
+    min-height: calc(90vh - 5rem);
+    overflow: auto;
+    padding: 1rem;
+    
+}
+
+#chat .sendBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sendBox input{
+
+    height: 0.6rem;
+    
+}
+
+
+.send{
+    background-color: rgb(204, 123, 123);
+    border-top-left-radius: 0!important;
+    border-bottom-left-radius: 0!important;
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+    margin-right: 0.2rem;
+}
+
+
+#chat .text{
+    margin: 0.2rem;
+    font-size: 1rem;
+    
+}
+
+.contentBox{
+    display: flex;
+    justify-content: "space-between";
+    align-items: "center";
+    border-radius: 0.3rem;
+    padding: 2px;
+    letter-spacing: 0.3px;
+    height: auto;
+    margin: 2px 0;
+    
+}
+
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+.multi-img{
+    min-width: 50%;
+    max-width: 45vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 5px;
+
+}
+.multi-img img{
+    object-fit: cover;
+    max-width: 50%;
+    min-height: 8rem;
+    min-width: 8rem;
+    display: block;
+    margin: 2px auto 0 0 ;
+    box-shadow: 0 0 2px #eae1e1;
+    
+}
+
+.single{
+    min-width: 10rem;
+    min-height: 10rem;
+}
+
+.single img{
+    width: fit-content;
+    height: fit-content;
+    display: block;
+    margin: auto; 
+}
+
+@media (max-width: 992px) {
+   
+    #chat{
+        width: 100vw;
+    }
+}
+
+@media (max-width: 800px) {
+   
+    .multi-img img{
+        min-height: 9rem;
+    min-width: 9rem;
+        
+    }
+} 
+
+@media (max-width: 700px) {
+   
+    .multi-img img{
+        min-height: 7rem;
+    min-width: 7rem;
+        
+    }
+} 
+
+@media (max-width: 576px) {
+   
+    .multi-img img{
+        min-height: 4rem;
+    min-width: 4rem;        
+    }
+
+} 

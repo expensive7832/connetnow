@@ -1,0 +1,19 @@
+.chatheader{
+    background-color: rgb(228, 135, 135);
+    padding: 2rem;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+button{
+    border: none;
+    background-color: transparent;
+}
+
+.profile{
+    min-width:4rem;
+    min-height: 4rem;
+    border-radius: 50%;
+    padding: .3rem;
+}

@@ -1,0 +1,12 @@
+@media (min-width: 768px) {
+    #register{
+        padding: 5rem;
+        
+    }
+}
+
+#register{
+    background: url(./../assets/bg.jpg);
+   
+    
+}
