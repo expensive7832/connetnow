@@ -57,11 +57,11 @@ function Register() {
         }
       );
     } else {
-      alert("please enable location");
+      // alert("please enable location");
     }
   }, []);
 
-  useLayoutEffect(() => getLocation, []);
+  useLayoutEffect(() => getLocation(), []);
 
   const navigate = useNavigate();
 
