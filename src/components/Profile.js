@@ -1,39 +1,23 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import "./profile.css";
-import {
-  Avatar,
-  Box,
-  Button,
-  CircularProgress,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Divider,
-  Grid,
-  Input,
-  Modal,
-  Typography,
-} from "@material-ui/core";
-import { Container, Stack } from "@mui/material";
-import pp from "./../assets/images.jpeg";
-import { Cancel, Delete, FileUploadOutlined, PhotoCamera } from "@mui/icons-material";
-import LogoutIcon from "@mui/icons-material/Logout";
-import DeleteIcon from "@mui/icons-material/Delete";
-import UpdateIcon from "@mui/icons-material/Update";
-import WomanIcon from "@mui/icons-material/Woman";
-import ManIcon from "@mui/icons-material/Man";
-import WcIcon from "@mui/icons-material/Wc";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import Axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { isLogout, userInfo } from "../store/Slices/UserSlices";
 import axios from "axios";
-import { CameraAlt } from "@material-ui/icons";
-import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
+
+import ManIcon from '@mui/icons-material/Man';
+import WcIcon from '@mui/icons-material/Wc'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import DeleteIcon from '@mui/icons-material/Delete';
+import LogoutIcon from '@mui/icons-material/Logout';
+
+import { Link, useNavigate } from "react-router-dom";
+
+import { isLogout, userInfo} from "./../store/Slices/UserSlices"
+import { toast } from "react-toastify";
+import { Avatar, button, Grid, Stack, Typography, Container, Divider, Box, Dialog, DialogTitle, DialogContent, CircularProgress, Button } from "@mui/material";
+import { Cancel, Delete, FileUploadOutlined } from "@mui/icons-material";
+
+import UpdateIcon from '@mui/icons-material/Update';
+
 const Profile = ({ tab }) => {
 
   const [loading, setLoading] = useState(false)
@@ -211,9 +195,9 @@ const Profile = ({ tab }) => {
              {
               user?.photos?.slice(1,)?.map((each) =>(
                <div className="otherpic">
-                 <button onClick={() => deleteImage(each?.id)}  className="deleteIcon">
+                 <Button onClick={() => deleteImage(each?.id)}  className="deleteIcon">
                     <Delete />
-                 </button>
+                 </Button>
                  <div className="theavatar">
                  <Avatar
                 
@@ -274,9 +258,9 @@ const Profile = ({ tab }) => {
                     <CircularProgress/>
                     :
 
-                    <Button type="submit" variant="outlined" color="#333">
+                    <button type="submit" variant="outlined" color="#333">
                     <FileUploadOutlined/>
-                  </Button>
+                  </button>
                    }
                     </Box>
                   </DialogContent>
@@ -360,9 +344,9 @@ const Profile = ({ tab }) => {
         <>
           <Typography>Login To Access This Page</Typography>
           <Link to="/login">
-            <Button variant="contained" color="secondary">
+            <button variant="contained" color="secondary">
               Login!
-            </Button>
+            </button>
           </Link>
         </>
       )}

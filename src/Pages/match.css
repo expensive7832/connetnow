@@ -88,7 +88,7 @@ cursor: pointer;
     }
 
     .match-card div img{
-        height: 40vh;
+        height: auto;
         max-width: 100%;
         width: 60%;
         object-fit: fill;

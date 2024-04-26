@@ -1,0 +1,36 @@
+import React, { useCallback, useEffect, useLayoutEffect, useState } from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
+import CheckIcon from '@mui/icons-material/Check';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import {
+  Card,
+  CardContent,
+  FormControlLabel,
+  InputAdornment,
+  Radio,
+  RadioGroup,
+  
+} from "@mui/material";
+import { PhotoCamera } from "@mui/icons-material";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { FormControl, FormLabel } from "@mui/material";
+import "./register.css";
+import axios from "axios";
+import CircularProgress from '@mui/material/CircularProgress';
+
+
+
+const SignUp = () => {
+
+ 
+  return (
+  );
+};
+
+export default SignUp;

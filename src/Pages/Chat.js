@@ -7,7 +7,7 @@ import {
   DialogContent,
   Dialog,
   Slide,
-} from "@material-ui/core";
+} from "@mui/material";
 
 import React, { useEffect, useRef, useState } from "react";
 import "./chat.css";

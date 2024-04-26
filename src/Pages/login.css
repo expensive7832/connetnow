@@ -3,5 +3,9 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url(./../assets/bg.jpg);
+    background: url(./../../public/bg.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+
 }

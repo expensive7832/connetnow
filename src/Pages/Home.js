@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "./home.css";
-import Grid from "@material-ui/core/Grid";
+import Grid from "@mui/material/Grid";
 
-import Person from "@material-ui/icons/People";
-import Chat from "@material-ui/icons/Chat.js";
-import WhatshotIcon from "@material-ui/icons/Whatshot";
+import Person from "@mui/icons-material/People";
+import Chat from "@mui/icons-material/Chat.js";
+import WhatshotIcon from "@mui/icons-material/Whatshot";
 
 import {
   Box,
   Tab,
-  CircularProgress,
   Tabs,
-  useMediaQuery,
   useTheme,
-} from "@material-ui/core";
+} from "@mui/material";
+
+
 
 import MatchCard from "../components/MatchCard";
 import axios from "axios";
@@ -26,10 +26,14 @@ import { toast } from "react-toastify";
 import Profile from "../components/Profile";
 import ChatTab from "../components/ChatTab";
 import NoMoreProfile from "../components/NoMoreProfile";
-import { ArrowBackIos } from "@material-ui/icons";
+import { ArrowBackIos } from "@mui/icons-material";
+
+
 
 
 const Home = ({onlineUsers}) => {
+
+
 
   const [userData, setUserData] = useState(null);
 
@@ -122,6 +126,18 @@ const Home = ({onlineUsers}) => {
               <ArrowBackIos />
             </button>
             <Tabs
+            TabIndicatorProps={{
+              sx:{
+                backgroundColor:"transparent"
+              }
+            }}
+            sx={{
+              "& button:focus": {
+                backgroundColor:"#f2f3f4"
+               
+              },
+              
+            }}
               className="tabs"
               value={selectTab}
               onChange={handleTabSelect}
@@ -143,7 +159,9 @@ const Home = ({onlineUsers}) => {
           {selectTab === 1 && (
             <div className="tinder-card">
               {!userData ? (
-                <CircularProgress style={{ color: "red" }} />
+                <Box sx={{ position:"absolute", top: "50%", left:"50%", transform: "translate(-50%)" }}>
+                  <img src="./../../loader.gif" style={{ width: "2rem", height: "2rem" }} />
+                </Box>
               ) : (
                 <>
                   <div className="profilecard">

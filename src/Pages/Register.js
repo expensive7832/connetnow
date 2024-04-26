@@ -1,136 +1,114 @@
-import React, { useCallback, useEffect, useLayoutEffect, useState } from "react";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
-import CheckIcon from '@mui/icons-material/Check';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import { PhotoCamera } from "@mui/icons-material";
 import {
+  Box,
+  Button,
   Card,
   CardContent,
-  FormControlLabel,
+  CircularProgress,
+  FormControl,
+  FormGroup,
+  FormLabel,
+  Grid,
+  Input,
   InputAdornment,
-  Radio,
-  RadioGroup,
-  
-} from "@material-ui/core";
-import { PhotoCamera, TextFields } from "@mui/icons-material";
-import Axios from "axios";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-import { Alert, FormControl, FormLabel } from "@mui/material";
-import "./register.css";
+  TextField,
+  Typography,
+} from "@mui/material";
 import axios from "axios";
-import CircularProgress from '@mui/material/CircularProgress';
+import React, { useCallback, useLayoutEffect, useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import "./register.css";
 
+function Register() {
+  const [location, setLocation] = useState(null);
+  const [loading, setLoading] = useState(false);
 
+  const getLocation = useCallback(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          axios(
+            `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}&zoom=18`
+          )
+            .then(({ data }) => {
+              const info = {
+                code: data?.address?.country_code,
+                area: data?.address?.county,
+                state: data?.address?.state,
+                lon: data?.lon,
+                lat: data?.lat,
+              };
 
-const SignUp = () => {
+              setLocation(info);
+            })
+            .catch((err) => {
+              alert(err.message);
+            });
+        },
+        (error) => {
+          alert(error.message);
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 5000,
+          maximumAge: 30000,
+        }
+      );
+    } else {
+      alert("please enable location");
+    }
+  }, []);
 
-  const [location, setLocation ] = useState(null)
-  const [loading, setLoading] = useState(false)
-  
-
-const getLocation = useCallback(() =>{
-
- if(navigator.geolocation){
-  navigator.geolocation.getCurrentPosition((position) => {
-    const { latitude, longitude } = position.coords;
-    axios(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}&zoom=18`)
-    .then(({data}) => {
-      const info = {
-        code: data?.address?.country_code,
-        area: data?.address?.county,
-        state: data?.address?.state,
-        lon: data?.lon,
-        lat: data?.lat
-      }
-
-      setLocation(info);
-    })
-    .catch((err) => {
-     
-      alert(err.message)
-    })
-  },
-  (error) => {
-   
-    alert(error.message);
-
-  },
-  {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 30000,
-
-  }
-);
- }else{
-  alert("please enable location")
- }
-
-}, [])
-
-
-  useLayoutEffect(() => getLocation , [])
+  useLayoutEffect(() => getLocation, []);
 
   const navigate = useNavigate();
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setLoading(true)
+    setLoading(true);
 
-   if(location === null){
+    if (location === null) {
+      alert("location error");
 
-      alert("location error")
-
-      setLoading(false)
-
-   }else{
+      setLoading(false);
+    } else {
       const data = new FormData(e.currentTarget);
-      data.append("location", JSON.stringify(location))
+      data.append("location", JSON.stringify(location));
 
-    
-      await axios.post(`${process.env.REACT_APP_API_URL}/register`, data)
-      .then(({data}) => {
-        setLoading(false)
-        toast.success("account created successfully")
-        navigate("/login")
-    })
-      .catch((err) => {
-        for (const key in err.response.data) {
-         toast.error(err.response.data[key])
-        }
+      await axios
+        .post(`${process.env.REACT_APP_API_URL}/register`, data)
+        .then(({ data }) => {
+          setLoading(false);
+          toast.success("account created successfully");
+          navigate("/login");
+        })
+        .catch((err) => {
+          for (const key in err.response.data) {
+            toast.error(err.response.data[key]);
+          }
 
-        setLoading(false)
-      });
-
-   }
-
-
- 
-
-   
+          setLoading(false);
+        });
+    }
   };
 
   return (
     <div id="register">
-     
       <Grid container>
-        <Grid item xs={0} sm={3} />
+        <Grid className="bg" item xs={0} sm={6} />
         <Grid item xs={12} sm={6}>
           <Box
             sx={{
-              marginTop: 8,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              padding: "0 1rem",
             }}
           >
-            <Card>
+            <div>
               {/* progress */}
               <Box sx={{ width: "100%", marginY: "1rem" }}>
                 <Typography
@@ -140,7 +118,6 @@ const getLocation = useCallback(() =>{
                 >
                   Sign up
                 </Typography>
-               
               </Box>
 
               <CardContent>
@@ -185,9 +162,9 @@ const getLocation = useCallback(() =>{
                     </Grid>
                     <Grid item xs={12} sm={6}>
                       <TextField
-                      name="photo"
-                      required
-                      type="file"
+                        name="photo"
+                        required
+                        type="file"
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
@@ -197,27 +174,41 @@ const getLocation = useCallback(() =>{
                         }}
                       />
                     </Grid>
-                   
+
                     <Grid item xs={12} sm={6}>
                       <FormControl>
-                      <FormLabel id="gender">Gender </FormLabel>
-                      <RadioGroup row  name="gender" defaultValue={"male"}>
-                        <FormControlLabel control={<Radio size="small" color="#333"/>} value={"male"} label="male"></FormControlLabel>
-                        <FormControlLabel control={<Radio size="small" color="#333"/>} value={"female"} label="female"></FormControlLabel>
-                        <FormControlLabel control={<Radio size="small" color="#333"/>} value={"other"} label="other"></FormControlLabel>
-                      </RadioGroup>
+                        <FormLabel id="gender">Gender </FormLabel>
+                        <Box sx={{ display: "flex", gap: "1rem" }}>
+                          <input type="radio" name="gender" value={"male"} />{" "}
+                          Male
+                          <input
+                            type="radio"
+                            name="gender"
+                            value={"female"}
+                          />{" "}
+                          female
+                          <input type="radio" name="gender" value={"other"} />
+                          Other
+                        </Box>
                       </FormControl>
-                      
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                    <FormControl>
-                     <FormLabel id="interest">Interested In</FormLabel>
-                     <RadioGroup row  name="interest" defaultValue={"male"}>
-                        <FormControlLabel control={<Radio size="small" color="#333"/>} value={"male"} label="male"></FormControlLabel>
-                        <FormControlLabel control={<Radio size="small" color="#333"/>} value={"female"} label="female"></FormControlLabel>
-                        <FormControlLabel control={<Radio size="small" color="#333"/>} value={"other"} label="other"></FormControlLabel>
-                      </RadioGroup>
-                     </FormControl>
+                      <FormControl>
+                        <FormLabel>Interested In</FormLabel>
+
+                        <Box sx={{ display: "flex", gap: "1rem" }}>
+                          <input type="radio" name="interest" value={"male"} />{" "}
+                          Male
+                          <input
+                            type="radio"
+                            name="interest"
+                            value={"female"}
+                          />{" "}
+                          female
+                          <input type="radio" name="interest" value={"other"} />
+                          Other
+                        </Box>
+                      </FormControl>
                     </Grid>
                     <Grid item xs={12}>
                       <TextField
@@ -270,8 +261,12 @@ const getLocation = useCallback(() =>{
                     alignItems="center"
                     style={{ height: "15vh" }}
                   >
-                    <Button type="submit" variant="contained" sx={{ mt: 5 }}>
-                      {loading ? <CircularProgress/> : "Sign up"}
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      sx={{ bgcolor: "#000" }}
+                    >
+                      {loading ? <CircularProgress /> : "Sign up"}
                     </Button>
                     <Grid item>
                       <Link to="/login" variant="body2">
@@ -281,13 +276,12 @@ const getLocation = useCallback(() =>{
                   </Grid>
                 </Box>
               </CardContent>
-            </Card>
+            </div>
           </Box>
         </Grid>
-        <Grid item xs={0} sm={3} />
       </Grid>
     </div>
   );
-};
+}
 
-export default SignUp;
+export default Register;

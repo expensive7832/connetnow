@@ -7,14 +7,14 @@ import {
   ShareSharp,
   VideoCall,
   Videocam,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import {
   Avatar,
   Box,
   Dialog,
   DialogContent,
   Typography,
-} from "@material-ui/core";
+} from "@mui/material";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -104,13 +104,24 @@ function ChatHeader() {
               <Avatar
                 src={user?.photos[0]?.url}
                 style={{
-                  height: "100%",
+                  height: "7rem",
                   objectFit: "contain",
                   margin: "auto",
-                  width: "100%",
+                  width: "7rem",
                 }}
               />
             </Box>
+
+            <Stack direction={"row"} justifyContent={"space-around"} alignItems={"center"} sx={{ my: "1rem"}}>
+
+            <Typography>
+              {new Date().getFullYear() - new Date(user?.age).getFullYear() } yrs
+            </Typography>
+            <Typography sx={{ my: "1rem"}}>
+              {user?.gender}
+            </Typography>
+
+            </Stack>
 
             <Stack
             sx={{

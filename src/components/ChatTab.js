@@ -7,7 +7,7 @@ import {
   Container,
   Typography,
   useMediaQuery,
-} from "@material-ui/core";
+} from "@mui/material";
 import { Skeleton, Stack } from "@mui/material";
 import "./chatTab.css";
 import { Link } from "react-router-dom";

@@ -16,4 +16,6 @@ button{
     min-height: 4rem;
     border-radius: 50%;
     padding: .3rem;
+    width: 4rem;
+    height: 4rem;
 }

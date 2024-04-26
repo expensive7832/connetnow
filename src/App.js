@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState, lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { CssBaseline } from "@material-ui/core";
+import { CssBaseline } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
@@ -73,7 +73,20 @@ const App = () => {
     <div id="tinder">
       <CssBaseline />
       <ToastContainer position="top-center" />
-      <Suspense fallback={<div>loading...</div>}>
+      <Suspense fallback={<div 
+      style={{
+        position:"absolute",
+        top: "50%",
+        left:"50%",
+        transform: "translate(-50%)"
+      }}
+      >
+        <img style={{
+          width: "6rem",
+          height:"6rem",
+          objectFit:"contain"
+        }} src="./../loading.png" alt="loader" />
+      </div>}>
         <BrowserRouter>
           <Routes>
             {

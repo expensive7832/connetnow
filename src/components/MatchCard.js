@@ -1,4 +1,4 @@
-import {  Card, CardMedia, Grid, Typography } from '@material-ui/core'
+import {  Card, CardMedia, Grid, Typography } from '@mui/material'
 import React, { useCallback, useEffect, useState } from 'react'
 import TinderCard from 'react-tinder-card'
 import "./matchcard.css"
@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import io  from 'socket.io-client'
+
 import { updateLikes } from '../store/Slices/UserSlices'
 
 function MatchCard({data}) {
@@ -14,29 +14,12 @@ function MatchCard({data}) {
 
   const navigate = useNavigate()
 
-  // const ioInstance = useCallback(() =>{
-  //   let socket = io(process.env.REACT_APP_API_URL)
-
-  //   socket.on("match", (data) =>{
-  //    navigate("/match", {
-  //     state: data
-  //    })
-  //   })
-  // }, [])
-
-  // useEffect(() => ioInstance(), [] )
-
-
   const dispatch = useDispatch()
 
   const token = useSelector((state) => state.user.token)
   const loginId = useSelector((state) => state.user.data._id)
 
  
-
-
-
-
    
 
     const onSwipe = (direction) => {

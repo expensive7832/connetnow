@@ -2,9 +2,10 @@ import React from 'react'
 import Header from '../components/Header'
 import Banner from '../components/Banner'
 import './landing.css'
-import Grid from '@material-ui/core/Grid'
-import IconButton from '@material-ui/core/IconButton'
-import Button from '@material-ui/core/Button'
+import Grid from '@mui/material/Grid'
+import IconButton from '@mui/material/IconButton'
+import Button from '@mui/material/Button'
+
 
 function Landing() {
   return (

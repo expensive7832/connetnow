@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+
 import { Link } from "react-router-dom";
-import { Card, CardActionArea, CardContent } from "@material-ui/core";
+import { Card, CardActionArea, CardContent } from "@mui/material";
 import { Stack } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GoogleIcon from "@mui/icons-material/Google";
@@ -59,6 +58,7 @@ const Login = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              padding:"1rem"
             }}
           >
             
@@ -98,7 +98,7 @@ const Login = () => {
                     alignItems="center"
                     style={{ height: "15vh" }}
                   >
-                    <Button type="submit" variant="contained" sx={{ mt: 5,width: "auto" }}>
+                    <Button type="submit" variant="contained" sx={{ width: "auto", backgroundColor:"#000" }}>
                       {loading ? <CircularProgress/> : "Login"}
                     </Button>
                     <Grid item>
@@ -109,7 +109,7 @@ const Login = () => {
                   </Grid>
                 </CardContent>
                 {/* social media login */}
-                <CardActionArea>
+                {/* <CardActionArea>
                   <Stack direction="row" sx={{ my: 3 }} spacing={2}>
                     <Button
                       variant="contained"
@@ -126,7 +126,7 @@ const Login = () => {
                       Login
                     </Button>
                   </Stack>
-                </CardActionArea>
+                </CardActionArea> */}
               </Card>
             </Box>
           </Box>

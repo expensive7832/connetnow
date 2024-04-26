@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import Person from "@material-ui/icons/People";
-import Chat from "@material-ui/icons/Chat.js";
-import WhatshotIcon from "@material-ui/icons/Whatshot";
+import { ArrowBackIos, Person } from '@mui/icons-material';
+import Chat from '@mui/icons-material/Chat';
+import WhatshotIcon from '@mui/icons-material/Whatshot';
 import InputEmoji from "react-input-emoji";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import heart from "./../assets/heart.gif"
 
 
-import { Box, Button, Tab,  Tabs, useMediaQuery, useTheme, Grid, CircularProgress, Typography } from '@material-ui/core'
+import { Box, Button, Tab,  Tabs, useMediaQuery, useTheme, Grid, CircularProgress, Typography } from "@mui/material"
 
 import "./match.css"
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -105,21 +105,47 @@ function Match() {
             style={{
               backgroundColor: "#FF5345",
               height: "20vh",
-              display: "flex",
-              justifyContent:`space-around`,
-              alignItems: "center"
-            //   display: `${selectTab !== 1 ? "none" : "block"}`,
+              padding: "0.4rem 0",
+              //   display: `${selectTab !== 1 ? "none" : "block"}`,
             }}
           >
+            <button
+              onClick={() => setSelectTab((prev) => prev - 1)}
+              style={{
+                textAlign: "left",
+                margin: "0 0.6rem",
+                color: "#fff",
+                display: "block",
+                border:"none",
+                backgroundColor: "transparent",
+              }}
+            >
+              <ArrowBackIos />
+            </button>
             <Tabs
+            TabIndicatorProps={{
+              sx:{
+                backgroundColor:"transparent"
+              }
+            }}
+            sx={{
+              "& button:focus": {
+                backgroundColor:"#f2f3f4"
+               
+              },
+              
+            }}
               className="tabs"
               value={selectTab}
               onChange={handleTabSelect}
               aria-label="icon menu"
               textColor="inherit"
               variant="fullWidth"
-              
-              
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
             >
               <Tab style={{ color: "#fff" }} icon={<Person />} />
               <Tab style={{ color: "#fff" }} icon={<WhatshotIcon />} />
